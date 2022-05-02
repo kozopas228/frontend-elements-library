@@ -1,3 +1,8 @@
+/* firstly, when the page is on wide screen the burger is not shown */
+.burger_icon {
+  display: none;
+}
+
 /* lock class aligned to body, the purpose is to deny scrolling 
 the body while burger has active state */
 ._lock {
@@ -17,17 +22,6 @@ header {
 
 .menu_list>li {
   margin-right: 10px;
-}
-
-.menu_link {
-  /* remove underlining of links and change their color*/
-  text-decoration: none;
-  color: black;
-}
-
-/* firstly, when the page is on wide screen the burger is not shown */
-.burger_icon {
-  display: none;
 }
 
 /* when screen is not wide (phone for example) we have to make burger visible */
@@ -113,7 +107,7 @@ header {
     transition-duration: 300ms;
 
     /* firstly, when burger is not active, the menu is not visible (it is far away in left) */
-    left: -120%;
+    left: -100%;
   }
 
   .menu_list {
