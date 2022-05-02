@@ -1,0 +1,134 @@
+/* lock class aligned to body, the purpose is to deny scrolling 
+the body while burger has active state */
+._lock {
+  overflow: hidden;
+}
+
+header {
+  height: 70px;
+  border-bottom: 1px solid #000;
+}
+
+.menu_list {
+  /* remove circles from list points */
+  list-style-type: none;
+  display: flex;
+}
+
+.menu_list>li {
+  margin-right: 10px;
+}
+
+.menu_link {
+  /* remove underlining of links and change their color*/
+  text-decoration: none;
+  color: black;
+}
+
+/* firstly, when the page is on wide screen the burger is not shown */
+.burger_icon {
+  display: none;
+}
+
+/* when screen is not wide (phone for example) we have to make burger visible */
+@media (max-width: 767px) {
+  .burger_icon {
+    display: block;
+    position: relative;
+
+    /* size can be whatever you want */
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+
+
+
+  /* stripes section */
+  .burger_icon::after,
+  .burger_icon::before,
+  .burger_icon span {
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition-duration: 300ms;
+
+    /* color of stripes */
+    background-color: black;
+  }
+
+  .burger_icon::after,
+  .burger_icon::before {
+    content: " ";
+  }
+
+  .burger_icon::before {
+    top: 0;
+  }
+
+  .burger_icon::after {
+    bottom: 0;
+  }
+
+  .burger_icon span {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+
+
+
+
+  /* animation section */
+  .burger_icon._active span {
+    transform: scale(0);
+  }
+
+  .burger_icon._active::before {
+    top: 50%;
+    transform: translate(0, -50%) rotate(-45deg);
+  }
+
+  .burger_icon._active::after {
+    bottom: 50%;
+    transform: translate(0, 50%) rotate(45deg);
+  }
+
+
+
+
+
+  .menu_wrapper {
+    /* overflow auto - we have to allow user to scroll the menu, and not the entire page */
+    overflow: auto;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
+    /* top == height of header container */
+    top: 70px;
+    background-color: rgba(0, 0, 0, 0.823);
+    transition-duration: 300ms;
+
+    /* firstly, when burger is not active, the menu is not visible (it is far away in left) */
+    left: -120%;
+  }
+
+  .menu_list {
+    /* make the menu vertical */
+    flex-direction: column;
+  }
+
+  .menu_link {
+    color: white;
+    font-size: 40px;
+  }
+
+
+  /* when burger is on active position - move the menu to the center */
+  .menu_wrapper._active {
+    left: 0;
+  }
+}
