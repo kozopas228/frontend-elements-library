@@ -1,0 +1,65 @@
+.list li {
+  /* this position for correctly placing the sublist */
+  position: relative;
+}
+
+.sub-list {
+  /* firstly the list is hidden */
+  opacity: 0;
+  visibility: hidden;
+
+  /* pointer-event: "none" here and "all" below used for
+  correctly hiding the sublist, if we don't use them
+  nothing awful will happen but user will be able to
+  "catch" the sublist while it's hiding and it's not
+  so good */
+  pointer-events: none;
+
+  /* positioning the sub list relatively his parent (li) */
+  position: absolute;
+
+  /* top 100 - because we don't need the sublist to hide his parent */
+  top: 100%;
+  left: 0;
+  background-color: black;
+  color: white;
+
+  /* sublist must be over other list items */
+  z-index: 10;
+
+  transform: translate(0, 10px);
+  transition-duration: 300ms;
+}
+
+.arrow {
+  /* in no-touch mode arrow is hidden */
+  display: none;
+}
+
+
+
+/* ====== PLATFORM DEPENDENT QUERIES ====== */
+
+/* make sublist visible when mouse is over the parent (hover)
+or when parent has active state (click on arrow, see .js file for more details) */
+._pc .list>li:hover .sub-list,
+._touch .list>li._active .sub-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0);
+  pointer-events: all;
+}
+
+._touch .arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid black;
+  transition-duration: 300ms;
+}
+
+._touch .list li._active .arrow {
+  transform: rotate(180deg);
+}
