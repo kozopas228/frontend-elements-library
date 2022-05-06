@@ -1,0 +1,65 @@
+/* when popup is open - we need to make the entire document not scrollable */
+body.lock {
+  overflow: hidden;
+}
+
+.popup_wrapper {
+  /* firstly the popup is hidden */
+  opacity: 0;
+  visibility: hidden;
+
+  /* placing the popup so it occupies the entire document */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  /* place the content of popup right in the center of the page (you can change this logic) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.837);
+  transition-duration: 800ms;
+}
+
+/* the window */
+.popup_content {
+  /* this overflow used for scrolling the popup window, not the entire page */
+  overflow: scroll;
+  position: relative;
+
+  /* firstly the window is hidden */
+  opacity: 0;
+
+  background-color: white;
+  color: black;
+  max-width: 500px;
+  max-height: 500px;
+
+  /* this is to make a fancy animaiton of appearing the popup window */
+  transform: perspective(200px) translate(0, -100%) rotateX(180deg);
+  transition-duration: 800ms;
+}
+
+/* close button, style it on your own */
+.popup_close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/* make the popup visible while it has open state */
+.popup_wrapper.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* window has its own opacity because it has different opening animation
+with entire popup 
+(the entire popup is smoothly appearing while window moves from the top) */
+.popup_wrapper.open .popup_content {
+  transform: translate(0, 0);
+  opacity: 1;
+}
