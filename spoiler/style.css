@@ -1,0 +1,46 @@
+.spoiler_header {
+  cursor: pointer;
+}
+
+.spoiler_wrapper {
+  position: relative;
+  /* overflow: hidden - to hide the content of the spoiler */
+  overflow: hidden;
+
+  /* style on your own */
+  max-width: 500px;
+  border: 1px solid black;
+  transition-duration: 300ms;
+
+}
+
+.spoiler_body {
+  position: absolute;
+}
+
+
+/* styling the close icon */
+.spoiler_close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+.spoiler_close::before,
+.spoiler_close::after {
+  content: " ";
+  background-color: black;
+  width: 15px;
+  height: 3px;
+  position: absolute;
+  transition-duration: 300ms;
+}
+
+.spoiler_close::before {
+  transform: rotate(90deg);
+}
+
+.spoiler_wrapper.active .spoiler_close::before {
+  transform: rotate(0deg);
+
+}
