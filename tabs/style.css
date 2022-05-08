@@ -1,0 +1,60 @@
+.tabs {
+  /* change on your preferences */
+  width: 400px;
+}
+
+.tabs nav {
+  display: flex;
+}
+
+.tabs_link {
+  /* you can change flex-grow to flex-basis (or width) if you know the final 
+  tabs amount */
+  flex-grow: 1;
+  text-align: center;
+}
+
+/* firstly all conent is hidden */
+.tabs_content {
+  display: none;
+}
+
+.tabs_content._active {
+  display: block;
+}
+
+/* style on your own */
+.tabs_content:nth-child(1) {
+  background-color: cornflowerblue;
+}
+
+.tabs_link:nth-child(1)._active {
+  background-color: cornflowerblue;
+}
+
+.tabs_content:nth-child(2) {
+  background-color: lime;
+}
+
+.tabs_link:nth-child(2)._active {
+  background-color: lime;
+}
+
+.tabs_content:nth-child(3) {
+  background-color: mediumaquamarine;
+}
+
+.tabs_link:nth-child(3)._active {
+  background-color: mediumaquamarine;
+}
+
+
+/* in small screens make the tab button names ending with "..." */
+@media (max-width: 767px) {
+  .tabs nav span {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
