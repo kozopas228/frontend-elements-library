@@ -1,0 +1,129 @@
+.carousel {
+  width: 900px;
+  height: 300px;
+  margin: 0 auto;
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .carousel {
+    width: 90%;
+  }
+}
+
+.carousel_items {
+  padding: 0 50px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.carousel_item {
+  flex-shrink: 0;
+  position: relative;
+  transition-duration: 300ms;
+  right: 0;
+  overflow: hidden;
+
+}
+
+.carousel_arrows {
+  position: relative;
+}
+
+.carousel_arrow-left,
+.carousel_arrow-right {
+  position: absolute;
+  /* height equal to the height of entire carousel */
+  height: 300px;
+  width: 50px;
+  z-index: 2;
+  cursor: pointer;
+  background: rgba(128, 128, 128, 0.812);
+  transition-duration: 200ms;
+}
+
+.carousel_arrow-left:hover,
+.carousel_arrow-right:hover {
+  background: rgb(128, 128, 128);
+}
+
+.carousel_arrow-right {
+  right: 0;
+}
+
+.carousel_arrow-left::before,
+.carousel_arrow-left::after,
+.carousel_arrow-right::before,
+.carousel_arrow-right::after {
+  content: "";
+  background-color: rgb(49, 49, 49);
+  width: 30px;
+  height: 5px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.carousel_arrow-left::before,
+.carousel_arrow-left::after {
+  left: 30%;
+}
+
+.carousel_arrow-right::before,
+.carousel_arrow-right::after {
+  right: 30%;
+}
+
+.carousel_arrow-left::before {
+  transform: rotate(45deg) translate(0, 250%);
+}
+
+.carousel_arrow-left::after {
+  transform: rotate(-45deg) translate(0, -250%);
+}
+
+.carousel_arrow-right::before {
+  transform: rotate(-45deg) translate(0, 250%);
+
+}
+
+.carousel_arrow-right::after {
+  transform: rotate(45deg) translate(0, -250%);
+}
+
+
+.carousel_points {
+  border: 1px solid grey;
+  background-color: rgb(235, 235, 235);
+  border-bottom: none;
+  height: 30px;
+  width: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.carousel_point {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: darkgrey;
+}
+
+.carousel_point:hover {
+  cursor: pointer;
+  background-color: #cecece;
+}
+
+.carousel_point.active {
+  background-color: rgb(0, 0, 0);
+}
