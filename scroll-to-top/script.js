@@ -3,7 +3,7 @@ const scrollNeedToShow = 300;
 const scroll = document.querySelector('.scroll');
 
 document.addEventListener('scroll', () => {
-  if (getScrolledHeight() > scrollNeedToShow) {
+  if (getScrolledDocumentHeight() > scrollNeedToShow) {
     scroll.classList.add('_active');
   } else {
     scroll.classList.remove('_active');
@@ -18,6 +18,6 @@ scroll.addEventListener('click', () => {
 });
 
 // the scrolled page pixels
-function getScrolledHeight() {
+function getScrolledDocumentHeight() {
   return Math.max(window.pageYOffset, document.documentElement.scrollTop);
 }
